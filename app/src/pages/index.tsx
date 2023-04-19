@@ -1,9 +1,12 @@
-import Link from 'next/link'
+import { useColorMode, Switch, Box } from '@chakra-ui/react';
 
 function IndexPage() {
+  const { toggleColorMode } = useColorMode();
   return (
     <div>
-      <Link href="/about">About</Link>
+      <Box ml="1rem" mt="1rem">
+        <Switch onChange={toggleColorMode}>Dark mode</Switch>
+      </Box>
     </div>
   )
 }
