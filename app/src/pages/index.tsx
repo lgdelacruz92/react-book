@@ -1,12 +1,11 @@
-import { ChakraProvider } from "@chakra-ui/react"
-import { AppProps } from "next/app";
+import Link from 'next/link'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function IndexPage() {
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <div>
+      <Link href="/about">About</Link>
+    </div>
   )
 }
 
-export default MyApp
+export default IndexPage
