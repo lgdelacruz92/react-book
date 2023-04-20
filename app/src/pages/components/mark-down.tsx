@@ -1,14 +1,20 @@
 import MarkdownIt from "markdown-it";
-import { ReactNode } from "react";
+import he from "he";
 
-const md = new MarkdownIt();
+const md = new MarkdownIt({ html: true });
 
 interface MarkdownProps {
   content: string;
 }
 
 export default function Markdown({ content }: MarkdownProps) {
-  const html = md.render(content);
+  console.log(content);
+  const html = md.render(he.decode(content));
 
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <div
+      className="markdown-it-output"
+      dangerouslySetInnerHTML={{ __html: html }}
+    ></div>
+  );
 }

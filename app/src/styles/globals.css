@@ -25,3 +25,28 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.markdown-it-output h1 {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.markdown-it-output h2 {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.markdown-it-output h3 {
+  font-size: large;
+  font-weight: bold;
+}
+
+.markdown-it-output h4 {
+  font-size: medium;
+  font-weight: bold;
+}
+
+.markdown-it-output h5 {
+  font-size: small;
+  font-weight: bold;
+}
