@@ -21,7 +21,7 @@ const chapters: ChapterType[] = [
               text: 'Introduction'
             },
             section: {
-              attributes: { mt: '1rem'},
+              attributes: { mt: '1rem' },
               text: 'Gather \'round, folks! It\'s time for a tale of epic proportions, filled with twists, turns, and the unforeseen rise of a true web development hero. This is the story of React, the brave UI champion that took the frontend world by storm and continues to do so to this day.'
             }
           },
