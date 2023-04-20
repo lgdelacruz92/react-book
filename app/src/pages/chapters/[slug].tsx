@@ -2,10 +2,10 @@ import { Box, Flex, Stack } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import type { Chapter } from "../../types/chapter";
+import type { ChapterType } from "../../types/chapter-type";
 import Page from "./components/page";
 interface Props {
-  chapter: Chapter;
+  chapter: ChapterType;
 }
 
 export default function Chapter({ chapter }: Props) {
@@ -23,7 +23,7 @@ export default function Chapter({ chapter }: Props) {
           <Link href="chapter-2">Chapter 1.2</Link>
         </Stack>
         <Box>
-          <Page page={chapter.content} />
+          <Page {...chapter.content} />
         </Box>
       </Flex>
     </div>

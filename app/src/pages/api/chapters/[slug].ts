@@ -2,8 +2,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import chapters from '../../mock-api/chapters';
 
-import { Chapter } from '@/types/chapter';
-import { NotFound } from '@/types/not-found';
+import { Chapter } from '@/types/chapter-type';
+import { NotFound } from '@/types/not-found-type';
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Chapter | NotFound>

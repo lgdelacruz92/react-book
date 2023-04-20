@@ -1,4 +1,4 @@
-export interface PageTitle {
+export interface PageTitleType {
     attributes: Record<string, string>;
     text: string;
 }

@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import chapters from '../../mock-api/chapters';
 
-import { Chapter } from '@/types/chapter';
+import { Chapter } from '@/types/chapter-type';
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Chapter[]>

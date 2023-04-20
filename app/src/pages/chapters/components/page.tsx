@@ -1,16 +1,14 @@
-import type { Chapter } from "../../../types/chapter";
 import PageSection from "./page-section";
 import PageTitle from "./page-title";
-import type { Page } from "../../../types/page";
-interface PageProps {
-  page: Page;
-}
+import type { PageType } from "../../../types/page-type";
 
-const Page: React.FC<PageProps> = ({ page }) => {
+const Page: React.FC<PageType> = ({ title, sections }) => {
   return (
     <>
-      <PageTitle {...page.title}></PageTitle>
-      <PageSection content={page.content}></PageSection>
+      <PageTitle {...title}></PageTitle>
+      {sections.map((section, index) => {
+        return <PageSection key={`page-section-${index}`} {...section} />;
+      })}
     </>
   );
 };

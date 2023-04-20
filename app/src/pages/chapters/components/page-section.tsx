@@ -1,11 +1,14 @@
-import type { PageSection } from "../../../types/page-section";
+import type { PageSectionType } from "../../../types/page-section-type";
+import Section from "./section";
+import SectionTitle from "./section-title";
 
-interface PageSectionProps {
-  content: PageSection[];
-}
-
-const PageSection: React.FC<PageSectionProps> = ({ content }) => {
-  return <></>;
+const PageSection: React.FC<PageSectionType> = ({ title, section }) => {
+  return (
+    <>
+      <SectionTitle {...title} />
+      <Section {...section} />
+    </>
+  );
 };
 
 export default PageSection;
