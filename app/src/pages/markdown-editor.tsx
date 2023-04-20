@@ -1,14 +1,12 @@
 import { Box, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import Markdown from "./components/mark-down";
-import he from "he";
 
 function MarkDownEditor() {
   const [content, setContent] = useState("");
 
   const handleContentChange = (event: React.SyntheticEvent<HTMLDivElement>) => {
     const text = event.currentTarget.innerText;
-    console.log(text);
     setContent(text);
   };
 
