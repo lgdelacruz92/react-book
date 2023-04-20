@@ -4,7 +4,6 @@ import type { Chapter } from '../../types/chapter';
 
 const chapters: Chapter[] = [
   {
-    title: 'First post',
     content: 
       {
         title: {
