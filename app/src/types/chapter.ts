@@ -1,5 +1,7 @@
+import type { Page } from "./page";
+
 export type Chapter ={
     title: string;
-    content: string;
+    content: Page;
     slug: string;
 }
