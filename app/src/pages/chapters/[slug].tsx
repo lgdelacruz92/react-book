@@ -2,13 +2,15 @@ import { Box, Flex, Stack } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import type { ChapterType } from "../../types/chapter-type";
+import type { ChapterType } from "@/types/chapter-type";
+import type { ChapterSlugType } from "@/types/chapter-slug-type";
 import "highlight.js/styles/monokai.css";
 interface Props {
   chapter: ChapterType;
+  paths: ChapterSlugType[];
 }
 
-export default function Chapter({ chapter }: Props) {
+export default function Chapter({ chapter, paths }: Props) {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -19,7 +21,13 @@ export default function Chapter({ chapter }: Props) {
     <div>
       <Flex>
         <Stack>
-          <Link href="chapter-1">Chapter 1.1</Link>
+          {paths.map((path, i) => {
+            return (
+              <Link key={`slug-${i}`} href={`${path.slug}`}>
+                {path.title}
+              </Link>
+            );
+          })}
         </Stack>
         <Box dangerouslySetInnerHTML={{ __html: chapter.content }}></Box>
       </Flex>
@@ -28,7 +36,11 @@ export default function Chapter({ chapter }: Props) {
 }
 
 export const getStaticPaths = async () => {
-  const paths = [{ params: { slug: "chapter-1" } }];
+  const response = await fetch(`http://localhost:3000/api/chapters`);
+  const chapterData = await response.json();
+  const paths = chapterData.map((c: ChapterType) => ({
+    params: { slug: c.slug },
+  }));
 
   return {
     paths,
@@ -44,9 +56,20 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const response = await fetch(`http://localhost:3000/api/chapters/${slug}`);
   const chapterData = await response.json();
 
+  // Get paths again
+  const chapterSlugsResponse = await fetch(
+    `http://localhost:3000/api/chapters`
+  );
+  const chapterSlugs = await chapterSlugsResponse.json();
+  const paths = chapterSlugs.map((c: ChapterType) => ({
+    slug: c.slug,
+    title: c.title,
+  }));
+
   return {
     props: {
       chapter: chapterData,
+      paths,
     },
   };
 };

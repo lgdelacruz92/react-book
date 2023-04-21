@@ -2,11 +2,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import chapters from '../../mock-api/chapters';
 
-import { Chapter } from '@/types/chapter-type';
-import { NotFound } from '@/types/not-found-type';
+import { ChapterType } from '@/types/chapter-type';
+import { NotFoundType } from '@/types/not-found-type';
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Chapter | NotFound>
+  res: NextApiResponse<ChapterType | NotFoundType>
 ) {
     const { slug } = req.query;
     const result = chapters.find(c => c.slug === slug)

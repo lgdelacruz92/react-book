@@ -2,10 +2,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import chapters from '../../mock-api/chapters';
 
-import { Chapter } from '@/types/chapter-type';
+import  type { ChapterType } from '@/types/chapter-type';
+import type { ChapterSlugType } from '@/types/chapter-slug-type';
+
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Chapter[]>
+  res: NextApiResponse<ChapterSlugType[]>
 ) {
-  res.status(200).json(chapters)
+  const slugs = chapters.map((c: ChapterType) => ({ slug: c.slug, title: c.title }))
+  res.status(200).json(slugs);
 }
