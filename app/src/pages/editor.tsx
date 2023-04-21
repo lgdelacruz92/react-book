@@ -22,7 +22,6 @@ function Editor() {
 
   const handleSave = () => {
     const content = editorView?.state.doc.toJSON();
-    console.log(content);
   };
 
   useEffect(() => {

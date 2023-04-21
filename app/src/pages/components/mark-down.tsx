@@ -1,13 +1,13 @@
 import MarkdownIt from "markdown-it";
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai.css";
-import { border } from "@chakra-ui/react";
+import { forwardRef, ForwardRefRenderFunction } from "react";
+import { ComponentWithAs } from "@chakra-ui/react";
 
 const md = new MarkdownIt({
   html: true,
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
-      console.log(hljs.highlight(str, { language: lang }).value);
       try {
         return hljs.highlight(str, { language: lang }).value;
       } catch (__) {}
@@ -21,17 +21,22 @@ interface MarkdownProps {
   content: string;
 }
 
-export default function Markdown({ content }: MarkdownProps) {
+const MarkdownBase: ForwardRefRenderFunction<HTMLDivElement, MarkdownProps> = (
+  { content }: MarkdownProps,
+  ref
+) => {
   const html = md.render(content);
 
   return (
     <div
-      style={{
-        padding: "1rem",
-        border: "1px solid lightgray",
-      }}
+      ref={ref}
       className="markdown-it-output"
       dangerouslySetInnerHTML={{ __html: html }}
     ></div>
   );
-}
+};
+
+export default forwardRef(MarkdownBase) as ComponentWithAs<
+  "div",
+  MarkdownProps
+>;
