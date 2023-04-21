@@ -3,7 +3,7 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import type { ChapterType } from "../../types/chapter-type";
-import Page from "./components/page";
+import "highlight.js/styles/monokai.css";
 interface Props {
   chapter: ChapterType;
 }
@@ -20,21 +20,15 @@ export default function Chapter({ chapter }: Props) {
       <Flex>
         <Stack>
           <Link href="chapter-1">Chapter 1.1</Link>
-          <Link href="chapter-2">Chapter 1.2</Link>
         </Stack>
-        <Box>
-          <Page {...chapter.content} />
-        </Box>
+        <Box dangerouslySetInnerHTML={{ __html: chapter.content }}></Box>
       </Flex>
     </div>
   );
 }
 
 export const getStaticPaths = async () => {
-  const paths = [
-    { params: { slug: "chapter-1" } },
-    { params: { slug: "chapter-2" } },
-  ];
+  const paths = [{ params: { slug: "chapter-1" } }];
 
   return {
     paths,

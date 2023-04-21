@@ -4,33 +4,9 @@ import type { ChapterType } from '../../types/chapter-type';
 
 const chapters: ChapterType[] = [
   {
-    content: 
-      {
-        title: {
-          attributes: 
-            { mt: '2rem', as: 'h2'}
-          ,
-          text: 'Chapter 1.1: React\'s History - An Unexpected Adventure'
-        },
-        sections: [
-          {
-            title: {
-              attributes: {
-                mt: '1rem', as: 'h5'
-              },
-              text: 'Introduction'
-            },
-            section: {
-              attributes: { mt: '1rem' },
-              text: 'Gather \'round, folks! It\'s time for a tale of epic proportions, filled with twists, turns, and the unforeseen rise of a true web development hero. This is the story of React, the brave UI champion that took the frontend world by storm and continues to do so to this day.'
-            }
-          },
-        ]
-      }
-    ,
     slug: 'chapter-1',
-  },
-
+    content: '<h2>Hello world</h2>\n<br>\n<p>this cis a code</p>\n<pre><code class="language-jsx"><span class="hljs-keyword">const</span> <span class="hljs-title function_">ReactFunction</span> = (<span class="hljs-params"></span>) =&gt; {\n&nbsp; &nbsp;<span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>\n}\n</code></pre>'
+  }
 ];
 
 export default chapters;

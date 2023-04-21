@@ -1,6 +1,4 @@
-import type { PageType } from "./page-type";
-
-export type ChapterType ={
-    content: PageType;
+export interface ChapterType {
     slug: string;
+    content: string;
 }
