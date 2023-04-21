@@ -1,5 +1,4 @@
-import { Box, Flex, Stack } from "@chakra-ui/react";
-import { GetStaticProps } from "next";
+import { Box, Center, Flex, Stack } from "@chakra-ui/react";
 import type { ChapterType } from "@/types/chapter-type";
 import type { ChapterSlugType } from "@/types/chapter-slug-type";
 import "highlight.js/styles/monokai.css";
@@ -8,13 +7,16 @@ import { useEffect, useState } from "react";
 import MarkDown from "./components/mark-down";
 
 const fetchChapterSlugs = async (): Promise<ChapterSlugType[]> => {
-  const response = await fetch(`/api/chapters`);
+  console.log(process.env.API_URL);
+  const response = await fetch(`${process.env.API_URL}/chapters`);
   const chapterSlugs: ChapterSlugType[] = await response.json();
   return chapterSlugs;
 };
 
 const fetchChapter = async (chapterSlug: string): Promise<ChapterType> => {
-  const response = await fetch(`/api/chapters/${chapterSlug}`);
+  const response = await fetch(
+    `${process.env.API_URL}/chapters/${chapterSlug}`
+  );
   const newPosts: ChapterType = await response.json();
   return newPosts;
 };
@@ -52,18 +54,20 @@ const Chapters = () => {
       .catch((err) => console.error(err));
   }, []);
   return (
-    <div>
-      <Flex>
-        <Stack>
-          <Sidebar
-            activeLink={chapterSlug}
-            links={links}
-            onChapterClick={handleSideBarClick}
-          />
-        </Stack>
-        <MarkDown content={currentChapter.content || ""}></MarkDown>
-      </Flex>
-    </div>
+    <Center>
+      <Box w="70%">
+        <Flex>
+          <Stack>
+            <Sidebar
+              activeLink={chapterSlug}
+              links={links}
+              onChapterClick={handleSideBarClick}
+            />
+          </Stack>
+          <MarkDown content={currentChapter.content || ""}></MarkDown>
+        </Flex>
+      </Box>
+    </Center>
   );
 };
 
