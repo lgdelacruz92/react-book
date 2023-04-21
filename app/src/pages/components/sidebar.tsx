@@ -1,26 +1,38 @@
 import type { ChapterSlugType } from "@/types/chapter-slug-type";
-import { Box, Button, Heading, Stack } from "@chakra-ui/react";
-import type { MouseEventHandler } from "react";
+import { Box, Heading, List, ListItem, ListIcon } from "@chakra-ui/react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
 
 interface SideBarProps {
   links: ChapterSlugType[];
   onChapterClick: (chapter: string) => void;
+  activeLink: string;
 }
-const SideBar: React.FC<SideBarProps> = ({ links, onChapterClick }) => {
+const SideBar: React.FC<SideBarProps> = ({
+  links,
+  onChapterClick,
+  activeLink,
+}) => {
   return (
     <Box minW="15rem" p="1rem">
       <Heading as="h2">Chapters</Heading>
-      <Stack spacing={0} borderTop="1px solid white" alignContent="center">
-        {links.map((link, i) => {
-          return (
-            <Button
-              key={`link-${i}`}
-              onClick={() => onChapterClick(link.slug)}
-              id={`${link.slug}`}
-            >{`${link.title}`}</Button>
-          );
-        })}
-      </Stack>
+      <nav>
+        <List>
+          {links.map((link, i) => {
+            return (
+              <ListItem
+                key={`link-${i}`}
+                onClick={() => onChapterClick(link.slug)}
+                id={`${link.slug}`}
+                mt="0.5rem"
+                color={activeLink === link.slug ? "green.500" : "current"}
+              >
+                <ListIcon as={ChevronRightIcon} color="green.500" />
+                {`${link.title}`}
+              </ListItem>
+            );
+          })}
+        </List>
+      </nav>
     </Box>
   );
 };

@@ -5,6 +5,7 @@ import type { ChapterSlugType } from "@/types/chapter-slug-type";
 import "highlight.js/styles/monokai.css";
 import Sidebar from "./components/sidebar";
 import { useEffect, useState } from "react";
+import MarkDown from "./components/mark-down";
 
 const fetchChapterSlugs = async (): Promise<ChapterSlugType[]> => {
   const response = await fetch(`/api/chapters`);
@@ -54,34 +55,16 @@ const Chapters = () => {
     <div>
       <Flex>
         <Stack>
-          <Sidebar links={links} onChapterClick={handleSideBarClick} />
+          <Sidebar
+            activeLink={chapterSlug}
+            links={links}
+            onChapterClick={handleSideBarClick}
+          />
         </Stack>
-        <Box dangerouslySetInnerHTML={{ __html: currentChapter.content }}></Box>
+        <MarkDown content={currentChapter.content || ""}></MarkDown>
       </Flex>
     </div>
   );
 };
 
-// export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-// if (!params) {
-//   return { notFound: true };
-// }
-
-// // Get paths again
-// const chapterSlugsResponse = await fetch(
-//   `http://localhost:3000/api/chapters`
-// );
-// const chapterSlugs = await chapterSlugsResponse.json();
-// const paths = chapterSlugs.map((c: ChapterType) => ({
-//   slug: c.slug,
-//   title: c.title,
-// }));
-
-//   return {
-//     props: {
-//       // paths,
-//       paths: [],
-//     },
-//   };
-// };
 export default Chapters;
