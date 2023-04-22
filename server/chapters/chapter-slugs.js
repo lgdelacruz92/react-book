@@ -9,5 +9,9 @@ exports.ChapterSlugs = [
     {
         title: 'Chapter 1.2',
         slug: 'chapter-1.2',
+    },
+    {
+        title: 'Chapter 1.3',
+        slug: 'chapter-1.3',
     }
 ];

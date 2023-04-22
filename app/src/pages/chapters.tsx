@@ -64,7 +64,9 @@ const Chapters = () => {
               onChapterClick={handleSideBarClick}
             />
           </Stack>
-          <MarkDown content={currentChapter.content || ""}></MarkDown>
+          <Box p="1rem">
+            <MarkDown content={currentChapter.content || ""}></MarkDown>
+          </Box>
         </Flex>
       </Box>
     </Center>
