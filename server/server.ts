@@ -18,7 +18,7 @@ app.get('/api/chapters/:slug', (req: Request, res: Response) => {
     res.json({
         title: chapterSlug.title,
         content: chapter,
-        slug: chapterSlug.slug
+        fileName: chapterSlug.slug
     });
 });
 

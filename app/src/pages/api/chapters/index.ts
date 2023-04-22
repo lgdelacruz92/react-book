@@ -9,6 +9,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<ChapterSlugType[]>
 ) {
-  const slugs = chapters.map((c: ChapterType) => ({ slug: c.slug, title: c.title }))
+  const slugs = chapters.map((c: ChapterType) => ({ fileName: c.slug, title: c.title }))
   res.status(200).json(slugs);
 }

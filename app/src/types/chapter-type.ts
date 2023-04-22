@@ -1,5 +1,5 @@
 export interface ChapterType {
-    slug: string;
+    fileName: string;
     content: string;
     title: string;
 }
