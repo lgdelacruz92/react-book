@@ -1,4 +1,4 @@
-## Chapter 1.1: React's History - An Unexpected Adventure<br>
+# Chapter 1.1: React's History - An Unexpected Adventure<br>
 <br>
 
 
